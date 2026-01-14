@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "code": "Oct 456",
+      "name": "Octoate 456",
+      "type": "Dispersion",
+      "specs": {
+        "tsc": { "min": 45, "max": 50 },
+        "ph": { "min": 7.0, "max": 8.5 },
+        "viscosity": { "min": 200, "max": 500 },
+        "particleSize": { "max": 5 }
+      },
+      "additional": "Standard acrylic dispersion"
+    },
+    {
+      "id": 2,
+      "code": "Oct 573",
+      "name": "Octoate 573",
+      "type": "Dispersion",
+      "specs": {
+        "tsc": { "min": 48, "max": 52 },
+        "ph": { "min": 8.0, "max": 9.0 },
+        "viscosity": { "min": 300, "max": 800 },
+        "particleSize": { "max": 3 }
+      },
+      "additional": "High performance dispersion"
+    }
+  ],
+  "jobOrders": [],
+  "approvalHistory": []
+}
