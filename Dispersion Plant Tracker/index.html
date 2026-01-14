@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiarco Chemical - Complete Dispersion Process System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a3a5f 0%, #2c5282 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1a3a5f;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .tab.active {
+            background: #4299e1;
+            color: white;
+        }
+
+        .tab:hover:not(.active) {
+            background: #edf2f7;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.active {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .badge.pending {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3182ce;
+        }
+
+        .btn-success {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #38a169;
+        }
+
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #e53e3e;
+        }
+
+        .btn-warning {
+            background: #ed8936;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #dd6b20;
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .step {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            width: 350px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .step.active {
+            border-color: #4299e1;
+            background: #ebf8ff;
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.2);
+        }
+
+        .step.completed {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .step.awaiting {
+            border-color: #ed8936;
+            background: #fffaf0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { border-color: #ed8936; }
+            50% { border-color: #fbd38d; }
+            100% { border-color: #ed8936; }
+        }
+
+        .step-connector {
+            width: 2px;
+            height: 20px;
+            background: #cbd5e0;
+        }
+
+        .step-header {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1a3a5f;
+        }
+
+        .step-info {
+            font-size: 12px;
+            color: #718096;
+            margin-bottom: 10px;
+        }
+
+        .step-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .step-files {
+            margin-top: 10px;
+            max-height: 100px;
+            overflow-y: auto;
+            font-size: 12px;
+        }
+
+        .file-item {
+            padding: 5px;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            color: #1a3a5f;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #718096;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #4299e1;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .spec-item {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .spec-header {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2d3748;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .upload-btn {
+            background: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .upload-btn:hover {
+            background: #3182ce;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .selected-files {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .selected-file {
+            padding: 8px;
+            background: #f8fafc;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .product-code {
+            font-weight: 600;
+            color: #1a3a5f;
+            font-size: 16px;
+        }
+
+        .product-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .spec-display {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        @media (max-width: 768px) {
+            .spec-grid, .spec-inputs, .product-specs {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                width: 100%;
+            }
+
+            .step-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="logo">TC</div>
+                    <div>
+                        <h1>Tiarco Chemical (M) Sdn Bhd</h1>
+                        <p style="opacity: 0.9; font-size: 14px;">Complete Dispersion Process System</p>
+                    </div>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 5px;">
+                    <span style="font-size: 14px;">User: Admin (Planner Dept)</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="dashboard">Dashboard</div>
+            <div class="tab" data-tab="products">Product Catalog</div>
+            <div class="tab" data-tab="jobs">Job Orders</div>
+            <div class="tab" data-tab="process">Process Flow</div>
+            <div class="tab" data-tab="approvals">Approvals</div>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="tab-content active" id="dashboard">
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: #1a3a5f;">System Overview</h3>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+                    <div>
+                        <h4 style="color: #718096; font-size: 14px;">Active Jobs</h4>
+                        <div style="font-size: 32px; font-weight: bold; color: #1a3a5f;">8</div>
+                    </div>
+                    <div>
+                        <h4 style="color: #718096; font-size: 14px;">Pending Approvals</h4>
+                        <div style="font-size: 32px; font-weight: bold; color: #1a3a5f;">3</div>
+                    </div>
+                    <div>
+                        <h4 style="color: #718096; font-size: 14px;">Total Products</h4>
+                        <div style="font-size: 32px; font-weight: bold; color: #1a3a5f;">15</div>
+                    </div>
+                    <div>
+                        <h4 style="color: #718096; font-size: 14px;">Completion Rate</h4>
+                        <div style="font-size: 32px; font-weight: bold; color: #1a3a5f;">94%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: #1a3a5f;">Recent Activities</h3>
+                <div id="recent-activities">
+                    <!-- Will be populated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Catalog -->
+        <div class="tab-content" id="products">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3 style="color: #1a3a5f;">Product Catalog</h3>
+                    <button class="btn btn-primary" onclick="showProductModal()">
+                        + Add Product
+                    </button>
+                </div>
+
+                <div id="products-container">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Orders -->
+        <div class="tab-content" id="jobs">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3 style="color: #1a3a5f;">Job Orders</h3>
+                    <button class="btn btn-primary" onclick="showJobModal()">
+                        + Create Job Order
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table id="jobs-table">
+                        <thead>
+                            <tr>
+                                <th>Job ID</th>
+                                <th>Batch No</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Current Step</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process Flow -->
+        <div class="tab-content" id="process">
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: #1a3a5f;">Select a Job to View Process</h3>
+                <div style="margin-bottom: 20px;">
+                    <select id="job-select" class="form-control" onchange="loadProcessFlow(this.value)">
+                        <option value="">Select Job Order...</option>
+                    </select>
+                </div>
+
+                <div id="process-container" style="display: none;">
+                    <div class="process-flow">
+                        <!-- Steps will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Approvals -->
+        <div class="tab-content" id="approvals">
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: #1a3a5f;">My Pending Approvals</h3>
+                <div id="pending-approvals">
+                    <!-- Will be populated -->
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h3 style="margin-bottom: 15px; color: #1a3a5f;">Approval History</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Job</th>
+                                <th>Step</th>
+                                <th>Action</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody id="approval-history">
+                            <!-- Will be populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add New Product</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label>Product Code *</label>
+                    <input type="text" class="form-control" id="productCode" placeholder="e.g., Oct 456">
+                </div>
+                <div class="form-group">
+                    <label>Product Name *</label>
+                    <input type="text" class="form-control" id="productName" placeholder="e.g., Octoate 456">
+                </div>
+                <div class="form-group">
+                    <label>Product Type *</label>
+                    <select class="form-control" id="productType">
+                        <option value="Dispersion">Dispersion</option>
+                        <option value="Emulsion">Emulsion</option>
+                        <option value="Solution">Solution</option>
+                        <option value="Additive">Additive</option>
+                        <option value="Catalyst">Catalyst</option>
+                    </select>
+                </div>
+
+                <h4 style="margin: 20px 0 10px; color: #1a3a5f;">Product Specifications</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-header">
+                            <span>TSC (%)</span>
+                            <span style="font-size: 12px; color: #718096;">Total Solid Content</span>
+                        </div>
+                        <div class="spec-inputs">
+                            <div>
+                                <label style="font-size: 12px;">Min (%)</label>
+                                <input type="number" class="form-control" id="tscMin" step="0.1" min="0" max="100" value="45">
+                            </div>
+                            <div>
+                                <label style="font-size: 12px;">Max (%)</label>
+                                <input type="number" class="form-control" id="tscMax" step="0.1" min="0" max="100" value="50">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <div class="spec-header">
+                            <span>pH</span>
+                            <span style="font-size: 12px; color: #718096;">Acidity/Alkalinity</span>
+                        </div>
+                        <div class="spec-inputs">
+                            <div>
+                                <label style="font-size: 12px;">Min</label>
+                                <input type="number" class="form-control" id="phMin" step="0.1" min="0" max="14" value="7.0">
+                            </div>
+                            <div>
+                                <label style="font-size: 12px;">Max</label>
+                                <input type="number" class="form-control" id="phMax" step="0.1" min="0" max="14" value="8.5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <div class="spec-header">
+                            <span>Viscosity</span>
+                            <span style="font-size: 12px; color: #718096;">cP or mPa·s</span>
+                        </div>
+                        <div class="spec-inputs">
+                            <div>
+                                <label style="font-size: 12px;">Min</label>
+                                <input type="number" class="form-control" id="viscosityMin" step="1" min="0" value="200">
+                            </div>
+                            <div>
+                                <label style="font-size: 12px;">Max</label>
+                                <input type="number" class="form-control" id="viscosityMax" step="1" min="0" value="500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <div class="spec-header">
+                            <span>Particle Size</span>
+                            <span style="font-size: 12px; color: #718096;">Microns (µm)</span>
+                        </div>
+                        <div>
+                            <label style="font-size: 12px;">Maximum (µm)</label>
+                            <input type="number" class="form-control" id="particleSizeMax" step="0.1" min="0" value="5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Specifications</label>
+                    <textarea class="form-control" id="additionalSpecs" rows="3" placeholder="Any additional notes or special handling instructions..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveProduct()">Save Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Modal -->
+    <div class="modal" id="jobModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Create Job Order</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label>Batch Number *</label>
+                    <input type="text" class="form-control" id="batchNumber" placeholder="e.g., TC-4572">
+                </div>
+
+                <div class="form-group">
+                    <label>Select Product *</label>
+                    <select class="form-control" id="jobProduct" onchange="loadProductSpecs(this.value)">
+                        <option value="">Select Product...</option>
+                    </select>
+                </div>
+
+                <div id="productSpecsDisplay" style="display: none; background: #f8fafc; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                    <h4 style="margin-bottom: 10px; color: #1a3a5f;">Product Specifications</h4>
+                    <div id="specsContent"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Quantity (kg) *</label>
+                    <input type="number" class="form-control" id="quantity" min="1" value="100">
+                </div>
+
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select class="form-control" id="priority">
+                        <option value="normal">Normal</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Special Instructions</label>
+                    <textarea class="form-control" id="instructions" rows="3" placeholder="Any special requirements..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveJobOrder()">Create Job</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="uploadStepName">Upload Files</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label>Select Files</label>
+                    <input type="file" class="form-control file-input" id="fileInput" multiple>
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()" style="margin-top: 10px;">
+                        📁 Choose Files
+                    </button>
+                </div>
+
+                <div id="selectedFilesList" class="selected-files">
+                    <!-- Selected files will appear here -->
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" id="fileDescription" rows="3" placeholder="Add description for these files..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="uploadFiles()">Upload Files</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approval Modal -->
+    <div class="modal" id="approvalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="approvalStepName">Step Approval</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label>Approver Name</label>
+                    <input type="text" class="form-control" id="approverName" value="Current User" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Department</label>
+                    <input type="text" class="form-control" id="approverDept" value="Planner Dept" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Comments *</label>
+                    <textarea class="form-control" id="approvalComments" rows="3" placeholder="Enter approval comments..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Decision *</label>
+                    <select class="form-control" id="approvalDecision" required>
+                        <option value="">Select Decision</option>
+                        <option value="approve">Approve - Proceed to Next Step</option>
+                        <option value="approve_with_notes">Approve with Notes</option>
+                        <option value="reject_correction">Reject - Requires Correction</option>
+                        <option value="reject_stop">Reject - Stop Process</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-success" onclick="submitApproval()">Submit Approval</button>
+                    <button class="btn btn-danger" onclick="submitRejection()">Submit Rejection</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database Simulation
+        let products = JSON.parse(localStorage.getItem('products')) || [
+            {
+                id: 1,
+                code: "Oct 456",
+                name: "Octoate 456",
+                type: "Dispersion",
+                specs: {
+                    tsc: { min: 45, max: 50 },
+                    ph: { min: 7.0, max: 8.5 },
+                    viscosity: { min: 200, max: 500 },
+                    particleSize: { max: 5 }
+                },
+                additional: "Standard acrylic dispersion for general purpose coatings"
+            },
+            {
+                id: 2,
+                code: "Oct 573",
+                name: "Octoate 573",
+                type: "Dispersion",
+                specs: {
+                    tsc: { min: 48, max: 52 },
+                    ph: { min: 8.0, max: 9.0 },
+                    viscosity: { min: 300, max: 800 },
+                    particleSize: { max: 3 }
+                },
+                additional: "High performance dispersion for exterior applications"
+            },
+            {
+                id: 3,
+                code: "Oct ZDB",
+                name: "Octoate ZDB",
+                type: "Catalyst",
+                specs: {
+                    tsc: { min: 40, max: 45 },
+                    ph: { min: 6.5, max: 7.5 },
+                    viscosity: { min: 100, max: 300 },
+                    particleSize: { max: 10 }
+                },
+                additional: "Zinc dibutyldithiocarbamate based catalyst"
+            }
+        ];
+
+        let jobOrders = JSON.parse(localStorage.getItem('jobOrders')) || [
+            {
+                id: 1,
+                jobId: "JOB-001",
+                batchNo: "TC-4572",
+                productId: 1,
+                quantity: 500,
+                priority: "high",
+                instructions: "Require extra viscosity testing",
+                status: "active",
+                currentStep: "Raw Material Verification",
+                steps: [
+                    {
+                        name: "Start",
+                        pic: "Planner Dept",
+                        status: "completed",
+                        approvedAt: "2023-10-15 08:30",
+                        approvedBy: "Lee Cheng",
+                        comments: "Process initiated",
+                        files: [
+                            { name: "job_order.pdf", date: "2023-10-15 08:00", uploadedBy: "Admin" }
+                        ]
+                    },
+                    {
+                        name: "Fill Requirement Form",
+                        pic: "Planner Dept",
+                        status: "completed",
+                        approvedAt: "2023-10-15 08:45",
+                        approvedBy: "Siti Sarah",
+                        comments: "Requirements verified",
+                        files: [
+                            { name: "requirement_form.pdf", date: "2023-10-15 08:40", uploadedBy: "Siti Sarah" }
+                        ]
+                    },
+                    {
+                        name: "Raw Material Verification",
+                        pic: "LG/Store Dept",
+                        status: "awaiting",
+                        files: [
+                            { name: "material_checklist.xlsx", date: "2023-10-15 09:30", uploadedBy: "Ahmad Faris" }
+                        ]
+                    },
+                    { name: "Pbmix", pic: "Production Manager", status: "pending", files: [] },
+                    { name: "Milling", pic: "Production Manager", status: "pending", files: [] },
+                    { name: "Adjustment", pic: "Production Manager", status: "pending", files: [] },
+                    { name: "Pay", pic: "OA Department", status: "pending", files: [] },
+                    { name: "Go Sampling", pic: "OA Department", status: "pending", files: [] },
+                    { name: "Present", pic: "OA Department", status: "pending", files: [] },
+                    { name: "End", pic: "OA Department", status: "pending", files: [] }
+                ],
+                history: [
+                    { action: "Job Order Created", user: "Admin", timestamp: "2023-10-15 08:00" },
+                    { action: "Start Step Approved", user: "Lee Cheng", timestamp: "2023-10-15 08:30" },
+                    { action: "Requirement Form Approved", user: "Siti Sarah", timestamp: "2023-10-15 08:45" }
+                ]
+            }
+        ];
+
+        let approvalHistory = JSON.parse(localStorage.getItem('approvalHistory')) || [];
+        let currentStepForUpload = null;
+        let currentStepForApproval = null;
+        let currentJobId = null;
+        let selectedFiles = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Update active tab
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show active content
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(tabId).classList.add('active');
+
+                    // Load data for tab
+                    if (tabId === 'products') loadProducts();
+                    if (tabId === 'jobs') loadJobs();
+                    if (tabId === 'process') loadJobSelect();
+                    if (tabId === 'approvals') loadApprovals();
+                });
+            });
+
+            // Load initial data
+            loadProducts();
+            loadJobs();
+            loadRecentActivities();
+            loadApprovals();
+            populateProductSelect();
+
+            // File input change handler
+            document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+        });
+
+        // Load products
+        function loadProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+
+            if (products.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #718096; padding: 40px;">No products found</p>';
+                return;
+            }
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+
+                card.innerHTML = `
+                    <div class="product-header">
+                        <div class="product-code">${product.code} - ${product.name}</div>
+                        <div>
+                            <button class="btn btn-sm btn-primary" onclick="editProduct(${product.id})">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                        </div>
+                    </div>
+                    <div style="color: #718096; font-size: 14px;">Type: ${product.type}</div>
+                    <div class="product-specs">
+                        <div class="spec-display">
+                            <span>TSC:</span>
+                            <span>${product.specs.tsc.min}-${product.specs.tsc.max}%</span>
+                        </div>
+                        <div class="spec-display">
+                            <span>pH:</span>
+                            <span>${product.specs.ph.min}-${product.specs.ph.max}</span>
+                        </div>
+                        <div class="spec-display">
+                            <span>Viscosity:</span>
+                            <span>${product.specs.viscosity.min}-${product.specs.viscosity.max} cP</span>
+                        </div>
+                        <div class="spec-display">
+                            <span>Particle Size:</span>
+                            <span>&lt; ${product.specs.particleSize.max} µm</span>
+                        </div>
+                    </div>
+                    ${product.additional ? `<div style="margin-top: 10px; color: #4a5568; font-size: 14px;">${product.additional}</div>` : ''}
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Load jobs
+        function loadJobs() {
+            const tbody = document.querySelector('#jobs-table tbody');
+            tbody.innerHTML = '';
+
+            if (jobOrders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 40px; color: #718096;">No job orders found</td></tr>';
+                return;
+            }
+
+            jobOrders.forEach(job => {
+                const product = products.find(p => p.id === job.productId);
+                const productName = product ? `${product.code} - ${product.name}` : 'Unknown';
+
+                let statusClass = 'badge pending';
+                if (job.status === 'active') statusClass = 'badge active';
+                else if (job.status === 'completed') statusClass = 'badge active';
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${job.jobId}</td>
+                    <td>${job.batchNo}</td>
+                    <td>${productName}</td>
+                    <td>${job.quantity} kg</td>
+                    <td><span class="${statusClass}">${job.status.toUpperCase()}</span></td>
+                    <td>${job.currentStep}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick="viewProcess(${job.id})">View Process</button>
+                        <button class="btn btn-sm btn-warning" onclick="editJob(${job.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteJob(${job.id})">Delete</button>
+                    </td>
+                `;
+
+                tbody.appendChild(row);
+            });
+        }
+
+        // Load recent activities
+        function loadRecentActivities() {
+            const container = document.getElementById('recent-activities');
+            container.innerHTML = '';
+
+            // Collect all activities
+            let allActivities = [];
+
+            jobOrders.forEach(job => {
+                job.history.forEach(history => {
+                    allActivities.push({
+                        ...history,
+                        jobId: job.jobId,
+                        batchNo: job.batchNo
+                    });
+                });
+
+                job.steps.forEach(step => {
+                    if (step.approvedAt) {
+                        allActivities.push({
+                            action: `${step.name} Approved`,
+                            user: step.approvedBy,
+                            timestamp: step.approvedAt,
+                            jobId: job.jobId,
+                            batchNo: job.batchNo
+                        });
+                    }
+
+                    step.files.forEach(file => {
+                        allActivities.push({
+                            action: `File Uploaded: ${file.name}`,
+                            user: file.uploadedBy,
+                            timestamp: file.date,
+                            jobId: job.jobId,
+                            batchNo: job.batchNo
+                        });
+                    });
+                });
+            });
+
+            // Sort by timestamp and take latest 5
+            allActivities.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            const recent = allActivities.slice(0, 5);
+
+            if (recent.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #718096; padding: 20px;">No recent activities</p>';
+                return;
+            }
+
+            recent.forEach(activity => {
+                const div = document.createElement('div');
+                div.style.padding = '10px';
+                div.style.borderBottom = '1px solid #e2e8f0';
+                div.style.display = 'flex';
+                div.style.justifyContent = 'space-between';
+                div.style.alignItems = 'center';
+
+                div.innerHTML = `
+                    <div>
+                        <strong>${activity.action}</strong>
+                        <div style="font-size: 12px; color: #718096;">
+                            ${activity.jobId} • ${activity.user} • ${activity.timestamp}
+                        </div>
+                    </div>
+                    <button class="btn btn-sm" onclick="viewProcessByJobId('${activity.jobId}')">View</button>
+                `;
+
+                container.appendChild(div);
+            });
+        }
+
+        // Load approvals
+        function loadApprovals() {
+            const pendingContainer = document.getElementById('pending-approvals');
+            const historyContainer = document.getElementById('approval-history');
+
+            // Clear containers
+            pendingContainer.innerHTML = '';
+            historyContainer.innerHTML = '';
+
+            // Find pending approvals for current user
+            const currentUser = "Current User"; // Simulated
+            let pendingCount = 0;
+
+            jobOrders.forEach(job => {
+                job.steps.forEach(step => {
+                    if (step.status === 'awaiting' && step.pic.includes(currentUser.split(' ')[0])) {
+                        pendingCount++;
+
+                        const card = document.createElement('div');
+                        card.style.background = 'white';
+                        card.style.border = '1px solid #e2e8f0';
+                        card.style.borderRadius = '8px';
+                        card.style.padding = '15px';
+                        card.style.marginBottom = '10px';
+
+                        card.innerHTML = `
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <div>
+                                    <strong>${step.name}</strong>
+                                    <div style="font-size: 14px; color: #718096; margin-top: 5px;">
+                                        Job: ${job.jobId} • Batch: ${job.batchNo} • PIC: ${step.pic}
+                                    </div>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="approveStepModal('${job.id}', '${step.name}')">
+                                    Review & Approve
+                                </button>
+                            </div>
+                        `;
+
+                        pendingContainer.appendChild(card);
+                    }
+                });
+            });
+
+            if (pendingCount === 0) {
+                pendingContainer.innerHTML = '<p style="text-align: center; color: #718096; padding: 40px;">No pending approvals</p>';
+            }
+
+            // Load approval history
+            if (approvalHistory.length === 0) {
+                historyContainer.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #718096; padding: 40px;">No approval history</td></tr>';
+                return;
+            }
+
+            approvalHistory.slice(0, 10).forEach(record => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.timestamp}</td>
+                    <td>${record.jobId}</td>
+                    <td>${record.step}</td>
+                    <td><span class="badge ${record.decision === 'approved' ? 'active' : 'pending'}">${record.decision.toUpperCase()}</span></td>
+                    <td>${record.comments || 'No comments'}</td>
+                `;
+                historyContainer.appendChild(row);
+            });
+        }
+
+        // Load job select for process flow
+        function loadJobSelect() {
+            const select = document.getElementById('job-select');
+            select.innerHTML = '<option value="">Select Job Order...</option>';
+
+            jobOrders.forEach(job => {
+                const product = products.find(p => p.id === job.productId);
+                const option = document.createElement('option');
+                option.value = job.id;
+                option.textContent = `${job.jobId} - ${job.batchNo}${product ? ` (${product.code})` : ''}`;
+                select.appendChild(option);
+            });
+        }
+
+        // Load process flow for selected job
+        function loadProcessFlow(jobId) {
+            const job = jobOrders.find(j => j.id == jobId);
+            if (!job) return;
+
+            currentJobId = jobId;
+            const container = document.getElementById('process-container');
+            const flowContainer = container.querySelector('.process-flow');
+
+            container.style.display = 'block';
+            flowContainer.innerHTML = '';
+
+            job.steps.forEach((step, index) => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = `step ${step.status}`;
+                stepDiv.id = `step-${step.name.replace(/ /g, '-')}`;
+
+                let statusText = '';
+                if (step.status === 'completed') {
+                    statusText = `Approved: ${step.approvedAt}`;
+                } else if (step.status === 'awaiting') {
+                    statusText = 'Awaiting Approval';
+                } else {
+                    statusText = 'Pending';
+                }
+
+                // Files list
+                let filesHtml = '';
+                if (step.files.length > 0) {
+                    filesHtml = '<div class="step-files">';
+                    step.files.forEach(file => {
+                        filesHtml += `
+                            <div class="file-item">
+                                <span class="file-name">📄 ${file.name}</span>
+                                <span style="font-size: 11px; color: #718096;">${file.uploadedBy}</span>
+                            </div>
+                        `;
+                    });
+                    filesHtml += '</div>';
+                } else {
+                    filesHtml = '<div class="step-files" style="color: #a0aec0; font-size: 12px; text-align: center;">No files uploaded</div>';
+                }
+
+                stepDiv.innerHTML = `
+                    <div class="step-header">${step.name}</div>
+                    <div class="step-info">PIC: ${step.pic}</div>
+                    <div class="step-info">${statusText}</div>
+                    ${filesHtml}
+                    <div class="step-actions">
+                        ${step.status === 'awaiting' ? `
+                            <button class="btn btn-sm btn-success" onclick="approveStepModal('${job.id}', '${step.name}')">Approve</button>
+                            <button class="btn btn-sm btn-danger" onclick="rejectStepModal('${job.id}', '${step.name}')">Reject</button>
+                        ` : ''}
+                        <button class="btn btn-sm btn-primary" onclick="uploadStepFiles('${job.id}', '${step.name}')">Upload Files</button>
+                        ${step.approvedBy ? `<button class="btn btn-sm" onclick="viewApprovalDetails('${job.id}', '${step.name}')">View Approval</button>` : ''}
+                    </div>
+                `;
+
+                flowContainer.appendChild(stepDiv);
+
+                // Add connector except for last step
+                if (index < job.steps.length - 1) {
+                    const connector = document.createElement('div');
+                    connector.className = 'step-connector';
+                    flowContainer.appendChild(connector);
+                }
+            });
+        }
+
+        // Populate product select in job modal
+        function populateProductSelect() {
+            const select = document.getElementById('jobProduct');
+            select.innerHTML = '<option value="">Select Product...</option>';
+
+            products.forEach(product => {
+                const option = document.createElement('option');
+                option.value = product.id;
+                option.textContent = `${product.code} - ${product.name}`;
+                select.appendChild(option);
+            });
+        }
+
+        // Load product specs in job modal
+        function loadProductSpecs(productId) {
+            const product = products.find(p => p.id == productId);
+            if (!product) return;
+
+            const display = document.getElementById('productSpecsDisplay');
+            const content = document.getElementById('specsContent');
+
+            display.style.display = 'block';
+            content.innerHTML = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <strong>TSC:</strong> ${product.specs.tsc.min}-${product.specs.tsc.max}%
+                    </div>
+                    <div>
+                        <strong>pH:</strong> ${product.specs.ph.min}-${product.specs.ph.max}
+                    </div>
+                    <div>
+                        <strong>Viscosity:</strong> ${product.specs.viscosity.min}-${product.specs.viscosity.max} cP
+                    </div>
+                    <div>
+                        <strong>Particle Size:</strong> &lt; ${product.specs.particleSize.max} µm
+                    </div>
+                </div>
+                ${product.additional ? `<div style="margin-top: 10px;"><strong>Additional:</strong> ${product.additional}</div>` : ''}
+            `;
+        }
+
+        // Show product modal
+        function showProductModal() {
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        // Show job modal
+        function showJobModal() {
+            document.getElementById('jobModal').classList.add('active');
+        }
+
+        // Close modal
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            // Reset file selection
+            selectedFiles = [];
+            document.getElementById('selectedFilesList').innerHTML = '';
+        }
+
+        // Save product
+        function saveProduct() {
+            const code = document.getElementById('productCode').value;
+            const name = document.getElementById('productName').value;
+            const type = document.getElementById('productType').value;
+            const tscMin = parseFloat(document.getElementById('tscMin').value);
+            const tscMax = parseFloat(document.getElementById('tscMax').value);
+            const phMin = parseFloat(document.getElementById('phMin').value);
+            const phMax = parseFloat(document.getElementById('phMax').value);
+            const viscosityMin = parseFloat(document.getElementById('viscosityMin').value);
+            const viscosityMax = parseFloat(document.getElementById('viscosityMax').value);
+            const particleSizeMax = parseFloat(document.getElementById('particleSizeMax').value);
+            const additional = document.getElementById('additionalSpecs').value;
+
+            if (!code || !name) {
+                alert('Please fill in required fields');
+                return;
+            }
+
+            const newProduct = {
+                id: products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1,
+                code,
+                name,
+                type,
+                specs: {
+                    tsc: { min: tscMin, max: tscMax },
+                    ph: { min: phMin, max: phMax },
+                    viscosity: { min: viscosityMin, max: viscosityMax },
+                    particleSize: { max: particleSizeMax }
+                },
+                additional
+            };
+
+            products.push(newProduct);
+            localStorage.setItem('products', JSON.stringify(products));
+
+            alert('Product saved successfully!');
+            closeModal();
+            loadProducts();
+            populateProductSelect();
+
+            // Reset form
+            document.getElementById('productCode').value = '';
+            document.getElementById('productName').value = '';
+            document.getElementById('additionalSpecs').value = '';
+        }
+
+        // Save job order
+        function saveJobOrder() {
+            const batchNo = document.getElementById('batchNumber').value;
+            const productId = document.getElementById('jobProduct').value;
+            const quantity = document.getElementById('quantity').value;
+            const priority = document.getElementById('priority').value;
+            const instructions = document.getElementById('instructions').value;
+
+            if (!batchNo || !productId || !quantity) {
+                alert('Please fill in required fields');
+                return;
+            }
+
+            // Generate job ID
+            const lastId = jobOrders.length > 0 ? Math.max(...jobOrders.map(j => parseInt(j.jobId.split('-')[1]))) : 0;
+            const jobId = `JOB-${String(lastId + 1).padStart(3, '0')}`;
+
+            const newJob = {
+                id: jobOrders.length > 0 ? Math.max(...jobOrders.map(j => j.id)) + 1 : 1,
+                jobId,
+                batchNo,
+                productId: parseInt(productId),
+                quantity: parseInt(quantity),
+                priority,
+                instructions,
+                status: 'active',
+                currentStep: 'Start',
+                steps: [
+                    { name: "Start", pic: "Planner Dept", status: "awaiting", files: [] },
+                    { name: "Fill Requirement Form", pic: "Planner Dept", status: "pending", files: [] },
+                    { name: "Raw Material Verification", pic: "LG/Store Dept", status: "pending", files: [] },
+                    { name: "Pbmix", pic: "Production Manager", status: "pending", files: [] },
+                    { name: "Milling", pic: "Production Manager", status: "pending", files: [] },
+                    { name: "Adjustment", pic: "Production Manager", status: "pending", files: [] },
+                    { name: "Pay", pic: "OA Department", status: "pending", files: [] },
+                    { name: "Go Sampling", pic: "OA Department", status: "pending", files: [] },
+                    { name: "Present", pic: "OA Department", status: "pending", files: [] },
+                    { name: "End", pic: "OA Department", status: "pending", files: [] }
+                ],
+                history: [
+                    {
+                        action: "Job Order Created",
+                        user: "Admin",
+                        timestamp: new Date().toLocaleString()
+                    }
+                ]
+            };
+
+            jobOrders.push(newJob);
+            localStorage.setItem('jobOrders', JSON.stringify(jobOrders));
+
+            alert(`Job Order ${jobId} created successfully!`);
+            closeModal();
+            loadJobs();
+            loadJobSelect();
+            loadRecentActivities();
+
+            // Reset form
+            document.getElementById('batchNumber').value = '';
+            document.getElementById('jobProduct').value = '';
+            document.getElementById('quantity').value = '100';
+            document.getElementById('instructions').value = '';
+            document.getElementById('productSpecsDisplay').style.display = 'none';
+        }
+
+        // Edit product
+        function editProduct(productId) {
+            const product = products.find(p => p.id == productId);
+            if (!product) return;
+
+            // Populate form
+            document.getElementById('productCode').value = product.code;
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productType').value = product.type;
+            document.getElementById('tscMin').value = product.specs.tsc.min;
+            document.getElementById('tscMax').value = product.specs.tsc.max;
+            document.getElementById('phMin').value = product.specs.ph.min;
+            document.getElementById('phMax').value = product.specs.ph.max;
+            document.getElementById('viscosityMin').value = product.specs.viscosity.min;
+            document.getElementById('viscosityMax').value = product.specs.viscosity.max;
+            document.getElementById('particleSizeMax').value = product.specs.particleSize.max;
+            document.getElementById('additionalSpecs').value = product.additional || '';
+
+            showProductModal();
+        }
+
+        // Edit job
+        function editJob(jobId) {
+            const job = jobOrders.find(j => j.id == jobId);
+            if (!job) return;
+
+            // Populate form
+            document.getElementById('batchNumber').value = job.batchNo;
+            document.getElementById('jobProduct').value = job.productId;
+            loadProductSpecs(job.productId);
+            document.getElementById('quantity').value = job.quantity;
+            document.getElementById('priority').value = job.priority;
+            document.getElementById('instructions').value = job.instructions;
+
+            showJobModal();
+        }
+
+        // Delete product
+        function deleteProduct(productId) {
+            if (!confirm('Are you sure you want to delete this product?')) return;
+
+            products = products.filter(p => p.id != productId);
+            localStorage.setItem('products', JSON.stringify(products));
+            loadProducts();
+            populateProductSelect();
+        }
+
+        // Delete job
+        function deleteJob(jobId) {
+            if (!confirm('Are you sure you want to delete this job order?')) return;
+
+            jobOrders = jobOrders.filter(j => j.id != jobId);
+            localStorage.setItem('jobOrders', JSON.stringify(jobOrders));
+            loadJobs();
+            loadJobSelect();
+        }
+
+        // View process
+        function viewProcess(jobId) {
+            // Switch to process tab
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelector('[data-tab="process"]').classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById('process').classList.add('active');
+
+            // Load process flow
+            document.getElementById('job-select').value = jobId;
+            loadProcessFlow(jobId);
+        }
+
+        // View process by job ID
+        function viewProcessByJobId(jobId) {
+            const job = jobOrders.find(j => j.jobId === jobId);
+            if (job) viewProcess(job.id);
+        }
+
+        // Upload step files modal
+        function uploadStepFiles(jobId, stepName) {
+            currentStepForUpload = { jobId, stepName };
+            document.getElementById('uploadStepName').textContent = `Upload Files for ${stepName}`;
+            document.getElementById('uploadModal').classList.add('active');
+        }
+
+        // Handle file selection
+        function handleFileSelect(event) {
+            selectedFiles = Array.from(event.target.files);
+            const fileList = document.getElementById('selectedFilesList');
+            fileList.innerHTML = '';
+
+            selectedFiles.forEach((file, index) => {
+                const div = document.createElement('div');
+                div.className = 'selected-file';
+                div.innerHTML = `
+                    <span>${file.name}</span>
+                    <span style="color: #718096; font-size: 12px;">${formatFileSize(file.size)}</span>
+                    <button class="btn btn-sm btn-danger" onclick="removeFile(${index})">×</button>
+                `;
+                fileList.appendChild(div);
+            });
+        }
+
+        // Remove file from selection
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            handleFileSelect({ target: { files: selectedFiles } });
+        }
+
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' bytes';
+            else if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            else return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // Upload files
+        function uploadFiles() {
+            if (!currentStepForUpload || selectedFiles.length === 0) {
+                alert('Please select files to upload');
+                return;
+            }
+
+            const job = jobOrders.find(j => j.id == currentStepForUpload.jobId);
+            if (!job) return;
+
+            const step = job.steps.find(s => s.name === currentStepForUpload.stepName);
+            if (!step) return;
+
+            const description = document.getElementById('fileDescription').value;
+
+            // Add files to step
+            selectedFiles.forEach(file => {
+                step.files.push({
+                    name: file.name,
+                    date: new Date().toLocaleString(),
+                    uploadedBy: "Current User",
+                    description: description || 'No description'
+                });
+            });
+
+            // Save to localStorage
+            localStorage.setItem('jobOrders', JSON.stringify(jobOrders));
+
+            alert(`${selectedFiles.length} file(s) uploaded successfully!`);
+            closeModal();
+
+            // Refresh process flow if viewing this job
+            if (currentJobId == currentStepForUpload.jobId) {
+                loadProcessFlow(currentJobId);
+            }
+        }
+
+        // Approve step modal
+        function approveStepModal(jobId, stepName) {
+            currentStepForApproval = { jobId, stepName };
+            document.getElementById('approvalStepName').textContent = `Approve ${stepName}`;
+            document.getElementById('approvalModal').classList.add('active');
+        }
+
+        // Reject step modal
+        function rejectStepModal(jobId, stepName) {
+            currentStepForApproval = { jobId, stepName };
+            document.getElementById('approvalDecision').value = 'reject_correction';
+            document.getElementById('approvalModal').classList.add('active');
+        }
+
+        // Submit approval
+        function submitApproval() {
+            if (!currentStepForApproval) return;
+
+            const comments = document.getElementById('approvalComments').value;
+            const decision = document.getElementById('approvalDecision').value;
+
+            if (!comments || !decision) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const job = jobOrders.find(j => j.id == currentStepForApproval.jobId);
+            if (!job) return;
+
+            const step = job.steps.find(s => s.name === currentStepForApproval.stepName);
+            if (!step) return;
+
+            // Update step
+            step.status = 'completed';
+            step.approvedAt = new Date().toLocaleString();
+            step.approvedBy = "Current User";
+            step.comments = comments;
+
+            // Move to next step
+            const currentIndex = job.steps.findIndex(s => s.name === step.name);
+            if (currentIndex < job.steps.length - 1) {
+                job.steps[currentIndex + 1].status = 'awaiting';
+                job.currentStep = job.steps[currentIndex + 1].name;
+            } else {
+                job.status = 'completed';
+            }
+
+            // Add to history
+            job.history.push({
+                action: `${step.name} Approved`,
+                user: "Current User",
+                timestamp: new Date().toLocaleString()
+            });
+
+            // Add to approval history
+            approvalHistory.push({
+                jobId: job.jobId,
+                step: step.name,
+                decision: 'approved',
+                comments,
+                timestamp: new Date().toLocaleString(),
+                approvedBy: "Current User"
+            });
+
+            // Save
+            localStorage.setItem('jobOrders', JSON.stringify(jobOrders));
+            localStorage.setItem('approvalHistory', JSON.stringify(approvalHistory));
+
+            alert('Step approved successfully!');
+            closeModal();
+
+            // Refresh
+            if (currentJobId == currentStepForApproval.jobId) {
+                loadProcessFlow(currentJobId);
+            }
+            loadApprovals();
+            loadRecentActivities();
+        }
+
+        // Submit rejection
+        function submitRejection() {
+            if (!currentStepForApproval) return;
+
+            const comments = document.getElementById('approvalComments').value;
+            if (!comments) {
+                alert('Please enter rejection reason');
+                return;
+            }
+
+            const job = jobOrders.find(j => j.id == currentStepForApproval.jobId);
+            if (!job) return;
+
+            const step = job.steps.find(s => s.name === currentStepForApproval.stepName);
+            if (!step) return;
+
+            // Update step
+            step.status = 'pending';
+            step.comments = comments;
+
+            // Move back to previous step
+            const currentIndex = job.steps.findIndex(s => s.name === step.name);
+            if (currentIndex > 0) {
+                job.steps[currentIndex - 1].status = 'awaiting';
+                job.currentStep = job.steps[currentIndex - 1].name;
+            }
+
+            // Add to history
+            job.history.push({
+                action: `${step.name} Rejected`,
+                user: "Current User",
+                timestamp: new Date().toLocaleString()
+            });
+
+            // Add to approval history
+            approvalHistory.push({
+                jobId: job.jobId,
+                step: step.name,
+                decision: 'rejected',
+                comments,
+                timestamp: new Date().toLocaleString(),
+                approvedBy: "Current User"
+            });
+
+            // Save
+            localStorage.setItem('jobOrders', JSON.stringify(jobOrders));
+            localStorage.setItem('approvalHistory', JSON.stringify(approvalHistory));
+
+            alert('Step rejected. Process returned to previous step.');
+            closeModal();
+
+            // Refresh
+            if (currentJobId == currentStepForApproval.jobId) {
+                loadProcessFlow(currentJobId);
+            }
+            loadApprovals();
+            loadRecentActivities();
+        }
+
+        // View approval details
+        function viewApprovalDetails(jobId, stepName) {
+            const job = jobOrders.find(j => j.id == jobId);
+            if (!job) return;
+
+            const step = job.steps.find(s => s.name === stepName);
+            if (!step || !step.approvedBy) return;
+
+            alert(`Approval Details:\n\nStep: ${step.name}\nApproved By: ${step.approvedBy}\nApproved At: ${step.approvedAt}\nComments: ${step.comments}`);
+        }
+    </script>
+</body>
+</html></title>
+</head>
+<body>
+</body>
+</html>
